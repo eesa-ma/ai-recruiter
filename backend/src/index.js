@@ -2,6 +2,7 @@ require('dotenv').config() //Loads variables from a .env file into: process.env
 const express = require('express')
 const  cors = require('cors') //allows frontend to talk to backend
 const helmet = require('helmet') //adds security headers
+const authRoutes = require('./routes/auth') // import auth routes
 
 const app = express() //server instance
 const port = process.env.PORT || 5000 //Port setup
@@ -16,6 +17,9 @@ app.use(express.json()) //Converts incoming JSON → JS object
 
 // initialize database
 require('./db/database')
+
+// connect routes
+app.use('/api/auth', authRoutes)
 
 // health check route
 app.get('/api/health', (req, res) => {
