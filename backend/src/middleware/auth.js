@@ -25,7 +25,7 @@ const authenticate = (req, res, next) => {
 }
 
 const requireRole = (...roles) => (req, res, next) => {  //...roles means it accepts multiple roles
-    if(!roles.includes(req.unser?.role)) {
+    if(!roles.includes(req.user?.role)) {
         return res.status(403).json({error: 'Access denied'})
     }
     next() // Express routes work like a chain

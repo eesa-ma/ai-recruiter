@@ -3,6 +3,7 @@ const express = require('express')
 const  cors = require('cors') //allows frontend to talk to backend
 const helmet = require('helmet') //adds security headers
 const authRoutes = require('./routes/auth') // import auth routes
+const profileRoutes = require('./routes/profile') // import profile routes
 
 const app = express() //server instance
 const port = process.env.PORT || 5000 //Port setup
@@ -20,6 +21,7 @@ require('./db/database')
 
 // connect routes
 app.use('/api/auth', authRoutes)
+app.use('/api/profile', profileRoutes)
 
 // health check route
 app.get('/api/health', (req, res) => {

@@ -27,7 +27,7 @@ db.exec(`
     );
 
     CREATE TABLE IF NOT EXISTS profiles (
-        id TEXT         PRIMARY KEY,
+        id              TEXT PRIMARY KEY,
         user_id         TEXT UNIQUE NOT NULL REFERENCES users(id),
         headline        TEXT,
         summary         TEXT,
